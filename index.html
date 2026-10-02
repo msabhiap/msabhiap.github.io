@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craft & Bean | Artisanal Coffee & Bakery</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        espresso: '#1A120B',
+                        roast: '#2B1E16',
+                        mocha: '#3E2723',
+                        caramel: '#D4A373',
+                        warmCreme: '#FDFBF7',
+                        beige: '#F4EBE1',
+                        terracotta: '#C67C4E',
+                        gold: '#E6B17E'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(26, 18, 11, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(26, 18, 11, 0.4) 0%, rgba(26, 18, 11, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .custom-shadow {
+            box-shadow: 0 20px 40px -15px rgba(26, 18, 11, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-warmCreme text-espresso font-sans antialiased selection:bg-caramel selection:text-white">
+
+    <!-- Header Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 py-5 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-caramel/20 flex items-center justify-center text-caramel group-hover:bg-caramel group-hover:text-espresso transition-all duration-300">
+                    <i class="fa-solid font-bold fa-mug-hot text-xl"></i>
+                </div>
+                <span class="font-serif text-2xl font-bold tracking-tight text-white group-hover:text-caramel transition-colors">Craft &amp; Bean</span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-beige/80">
+                <a href="#home" class="hover:text-caramel transition-colors">Home</a>
+                <a href="#menu" class="hover:text-caramel transition-colors">Menu</a>
+                <a href="#story" class="hover:text-caramel transition-colors">Our Story</a>
+                <a href="#blends" class="hover:text-caramel transition-colors">Special Blends</a>
+                <a href="#contact" class="hover:text-caramel transition-colors">Contact</a>
+            </nav>
+
+            <!-- Actions (Cart & Mobile Menu Trigger) -->
+            <div class="flex items-center gap-4">
+                <button id="cartBtn" class="relative p-2.5 rounded-full bg-white/10 text-white hover:bg-caramel hover:text-espresso transition-all duration-300">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cartBadge" class="absolute -top-1 -right-1 w-5 h-5 bg-terracotta text-white font-bold text-xs rounded-full flex items-center justify-center border-2 border-espresso opacity-0 scale-0 transition-all duration-300">0</span>
+                </button>
+                <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-full bg-white/10 text-white hover:bg-caramel hover:text-espresso transition-all">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-roast/95 backdrop-blur-md border-b border-caramel/10 py-6 px-6 flex flex-col gap-4 text-beige/90 transition-all">
+            <a href="#home" class="mobile-nav-link text-lg font-medium hover:text-caramel">Home</a>
+            <a href="#menu" class="mobile-nav-link text-lg font-medium hover:text-caramel">Menu</a>
+            <a href="#story" class="mobile-nav-link text-lg font-medium hover:text-caramel">Our Story</a>
+            <a href="#blends" class="mobile-nav-link text-lg font-medium hover:text-caramel">Special Blends</a>
+            <a href="#contact" class="mobile-nav-link text-lg font-medium hover:text-caramel">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center pt-24 pb-16 px-4 md:px-8 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-7 text-white space-y-6 pt-12 md:pt-0">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-caramel/20 border border-caramel/30 text-caramel text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-certificate"></i> Premium Artisanal Roastery
+                </div>
+                <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+                    Artisanal Coffee,<br>
+                    <span class="italic text-caramel font-normal">Brewed to Perfection.</span>
+                </h1>
+                <p class="text-beige/80 text-base sm:text-lg max-w-xl font-light leading-relaxed">
+                    Sourced sustainably from high-altitude single-origin farms, roasted locally in small batches, and crafted carefully by master baristas for your perfect cup.
+                </p>
+                <div class="flex flex-wrap items-center gap-4 pt-4">
+                    <a href="#menu" class="px-8 py-4 bg-terracotta hover:bg-caramel text-white font-semibold rounded-full shadow-lg hover:shadow-terracotta/30 transition-all duration-300 transform hover:-translate-y-0.5">
+                        Explore Menu
+                    </a>
+                    <a href="#blends" class="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full border border-white/20 backdrop-blur-sm transition-all duration-300">
+                        View Special Blends
+                    </a>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10 max-w-md">
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-serif font-bold text-caramel">100%</p>
+                        <p class="text-xs text-beige/60">Arabica Beans</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-serif font-bold text-caramel">15+</p>
+                        <p class="text-xs text-beige/60">Roast Varieties</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-serif font-bold text-caramel">4.9 ★</p>
+                        <p class="text-xs text-beige/60">5k+ Reviews</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Feature Image / Card -->
+            <div class="md:col-span-5 hidden md:block">
+                <div class="relative mx-auto max-w-sm">
+                    <div class="absolute -inset-4 rounded-3xl bg-caramel/20 blur-xl"></div>
+                    <div class="relative rounded-2xl bg-roast/80 p-5 border border-caramel/20 text-white shadow-2xl backdrop-blur-md">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop" alt="Featured Espresso" class="w-full h-72 object-cover rounded-xl mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <span class="text-xs text-caramel uppercase font-semibold">Today's Special</span>
+                                <h3 class="font-serif text-xl font-bold">Smoked Vanilla Latte</h3>
+                            </div>
+                            <span class="text-lg font-bold text-gold">$5.75</span>
+                        </div>
+                        <p class="text-xs text-beige/70 mb-4">Double shot espresso, house vanilla bean syrup, microfoam with smoked sea salt finish.</p>
+                        <button onclick="quickAddToCart(1)" class="w-full py-2.5 bg-caramel/20 hover:bg-caramel hover:text-espresso text-caramel text-sm font-semibold rounded-lg transition-all border border-caramel/30 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus text-xs"></i> Quick Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artisanal Story Section -->
+    <section id="story" class="py-20 px-4 md:px-8 bg-beige/40">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=800&auto=format&fit=crop" alt="Coffee Beans" class="rounded-2xl shadow-lg w-full h-64 object-cover">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop" alt="Barista Pouring Coffee" class="rounded-2xl shadow-lg w-full h-64 object-cover mt-8">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-espresso text-white p-6 rounded-2xl hidden sm:block max-w-xs shadow-xl border border-caramel/20">
+                        <i class="fa-solid fa-quote-left text-2xl text-caramel mb-2"></i>
+                        <p class="text-xs text-beige/80 italic">"Every bean tells a story of the soil, elevation, and passion that nurtured it."</p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <span class="text-terracotta text-sm font-semibold tracking-wider uppercase">Our Craft &amp; Heritage</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight">Rooted in Passion, Dedicated to Pure Flavor</h2>
+                    <p class="text-espresso/70 leading-relaxed">
+                        At Craft &amp; Bean, we believe exceptional coffee starts at the source. We partner directly with sustainable, fair-trade micro-farms across Ethiopia, Colombia, and Guatemala.
+                    </p>
+                    <p class="text-espresso/70 leading-relaxed">
+                        Our master roasters meticulously tune temperature profiles to unlock rich aromatic notes unique to each harvest—delivering an unmatched sensory journey in every mug.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-caramel/15 text-terracotta flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+                            <span class="text-sm font-medium">100% Organic Sourcing</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-caramel/15 text-terracotta flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-fire-flame-curved"></i>
+                            </div>
+                            <span class="text-sm font-medium">Small-Batch Roasted</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Menu Section -->
+    <section id="menu" class="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-terracotta text-sm font-semibold tracking-wider uppercase">Freshly Brewed</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold mt-2">Explore Our Menu</h2>
+            <p class="text-espresso/70 mt-3 text-sm sm:text-base">Handcrafted coffee beverages, slow-steeped cold brews, and fresh daily pastries.</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex items-center justify-start md:justify-center gap-2 sm:gap-3 overflow-x-auto pb-4 mb-10 hide-scrollbar">
+            <button class="filter-btn active px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-espresso text-white shadow-md" data-category="all">All Items</button>
+            <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-white text-espresso/70 hover:bg-beige border border-gray-200" data-category="espresso">Espresso Bar</button>
+            <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-white text-espresso/70 hover:bg-beige border border-gray-200" data-category="cold">Cold Brews</button>
+            <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-white text-espresso/70 hover:bg-beige border border-gray-200" data-category="special">Special Blends</button>
+            <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-white text-espresso/70 hover:bg-beige border border-gray-200" data-category="bakery">Artisanal Bakery</button>
+        </div>
+
+        <!-- Menu Grid -->
+        <div id="menuContainer" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic Menu items rendered via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Special Roasted Whole Beans Section -->
+    <section id="blends" class="py-20 px-4 md:px-8 bg-roast text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-caramel text-sm font-semibold tracking-wider uppercase">Take the Craft Home</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold mt-2">Whole Bean Collections</h2>
+                </div>
+                <p class="text-beige/70 text-sm max-w-md mt-4 md:mt-0">Freshly roasted whole beans packaged in nitrogen-sealed eco pouches to lock in original aromatics and freshness.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Bean Bag 1 -->
+                <div class="bg-espresso/60 border border-caramel/20 rounded-2xl p-6 flex flex-col justify-between hover:border-caramel/50 transition-all">
+                    <div>
+                        <div class="h-48 bg-roast rounded-xl overflow-hidden mb-5 relative group">
+                            <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?q=80&w=600&auto=format&fit=crop" alt="Highland Yirgacheffe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-terracotta text-white text-xs px-2.5 py-1 rounded-full font-semibold">Single Origin</span>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold">Ethiopia Yirgacheffe</h3>
+                        <p class="text-caramel text-xs font-semibold mt-1 mb-3">LIGHT-MEDIUM ROAST • 250g</p>
+                        <p class="text-beige/70 text-xs leading-relaxed mb-4">Bright jasmine floral aroma paired with delicate bergamot, peach sweetness, and crisp lemongrass notes.</p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                        <span class="text-xl font-bold text-gold">$18.50</span>
+                        <button onclick="quickAddToCart('bean-1')" class="px-4 py-2 bg-caramel text-espresso hover:bg-gold font-semibold text-xs rounded-lg transition-colors">Add Bag</button>
+                    </div>
+                </div>
+
+                <!-- Bean Bag 2 -->
+                <div class="bg-espresso/60 border border-caramel/20 rounded-2xl p-6 flex flex-col justify-between hover:border-caramel/50 transition-all">
+                    <div>
+                        <div class="h-48 bg-roast rounded-xl overflow-hidden mb-5 relative group">
+                            <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?q=80&w=600&auto=format&fit=crop" alt="Velvet Espresso Reserve" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-caramel text-espresso text-xs px-2.5 py-1 rounded-full font-bold">Signature</span>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold">Velvet Espresso Reserve</h3>
+                        <p class="text-caramel text-xs font-semibold mt-1 mb-3">MEDIUM-DARK ROAST • 250g</p>
+                        <p class="text-beige/70 text-xs leading-relaxed mb-4">Rich dark chocolate, toasted hazelnut, and smooth caramel crema. Perfectly balanced acidity.</p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                        <span class="text-xl font-bold text-gold">$19.00</span>
+                        <button onclick="quickAddToCart('bean-2')" class="px-4 py-2 bg-caramel text-espresso hover:bg-gold font-semibold text-xs rounded-lg transition-colors">Add Bag</button>
+                    </div>
+                </div>
+
+                <!-- Bean Bag 3 -->
+                <div class="bg-espresso/60 border border-caramel/20 rounded-2xl p-6 flex flex-col justify-between hover:border-caramel/50 transition-all">
+                    <div>
+                        <div class="h-48 bg-roast rounded-xl overflow-hidden mb-5 relative group">
+                            <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=600&auto=format&fit=crop" alt="Sumatra Dark Peak" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-amber-800 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Dark Roast</span>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold">Sumatra Dark Peak</h3>
+                        <p class="text-caramel text-xs font-semibold mt-1 mb-3">DARK ROAST • 250g</p>
+                        <p class="text-beige/70 text-xs leading-relaxed mb-4">Earthy, bold body featuring cedar notes, dark cocoa nibs, and a lingering warm spice finish.</p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                        <span class="text-xl font-bold text-gold">$17.50</span>
+                        <button onclick="quickAddToCart('bean-3')" class="px-4 py-2 bg-caramel text-espresso hover:bg-gold font-semibold text-xs rounded-lg transition-colors">Add Bag</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-terracotta text-sm font-semibold tracking-wider uppercase">Community Love</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-2">What Coffee Lovers Say</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div class="space-y-3">
+                    <div class="text-gold flex gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-espresso/80 text-sm leading-relaxed">"Hands down the best flat white in the city. The barista's attention to milk texture and espresso extraction is on another level."</p>
+                </div>
+                <div class="flex items-center gap-3 pt-6 mt-4 border-t border-gray-100">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=120&auto=format&fit=crop" alt="Sarah M." class="w-10 h-10 rounded-full object-cover">
+                    <div>
+                        <h4 class="font-bold text-xs">Sarah Jenkins</h4>
+                        <span class="text-xs text-gray-400">Regular Patron</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div class="space-y-3">
+                    <div class="text-gold flex gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-espresso/80 text-sm leading-relaxed">"The Ethiopia Yirgacheffe whole beans I ordered online arrived so fresh! Blooming in my French press smells heavenly."</p>
+                </div>
+                <div class="flex items-center gap-3 pt-6 mt-4 border-t border-gray-100">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=120&auto=format&fit=crop" alt="David L." class="w-10 h-10 rounded-full object-cover">
+                    <div>
+                        <h4 class="font-bold text-xs">David Miller</h4>
+                        <span class="text-xs text-gray-400">Home Brewer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div class="space-y-3">
+                    <div class="text-gold flex gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-espresso/80 text-sm leading-relaxed">"A cozy atmosphere, warm lighting, and fresh almond croissants that pair perfectly with their cold brews. A daily staple!"</p>
+                </div>
+                <div class="flex items-center gap-3 pt-6 mt-4 border-t border-gray-100">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=120&auto=format&fit=crop" alt="Elena R." class="w-10 h-10 rounded-full object-cover">
+                    <div>
+                        <h4 class="font-bold text-xs">Elena Rostova</h4>
+                        <span class="text-xs text-gray-400">Local Guide</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact Section -->
+    <footer id="contact" class="bg-espresso text-white pt-16 pb-8 border-t border-caramel/10">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+            <!-- Brand Info -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-caramel/20 flex items-center justify-center text-caramel">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <span class="font-serif text-xl font-bold tracking-tight">Craft &amp; Bean</span>
+                </div>
+                <p class="text-beige/60 text-xs leading-relaxed">Crafting memorable coffee experiences through intentional sourcing, precision roasting, and genuine hospitality.</p>
+                <div class="flex items-center gap-3 text-beige/70 text-sm pt-2">
+                    <a href="#" class="w-8 h-8 rounded-full bg-white/5 hover:bg-caramel hover:text-espresso flex items-center justify-center transition-all"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-white/5 hover:bg-caramel hover:text-espresso flex items-center justify-center transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-white/5 hover:bg-caramel hover:text-espresso flex items-center justify-center transition-all"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Operating Hours -->
+            <div>
+                <h4 class="font-serif font-bold text-caramel mb-4">Opening Hours</h4>
+                <ul class="text-xs text-beige/70 space-y-2">
+                    <li class="flex justify-between"><span>Mon - Fri:</span> <span class="text-white">6:30 AM - 7:00 PM</span></li>
+                    <li class="flex justify-between"><span>Saturday:</span> <span class="text-white">7:00 AM - 8:00 PM</span></li>
+                    <li class="flex justify-between"><span>Sunday:</span> <span class="text-white">8:00 AM - 6:00 PM</span></li>
+                </ul>
+            </div>
+
+            <!-- Location & Contact -->
+            <div>
+                <h4 class="font-serif font-bold text-caramel mb-4">Visit Us</h4>
+                <p class="text-xs text-beige/70 leading-relaxed mb-3">
+                    <i class="fa-solid fa-location-dot text-terracotta mr-1.5"></i> 248 Roaster Alley, Artisan Quarter<br>Portland, OR 97201
+                </p>
+                <p class="text-xs text-beige/70">
+                    <i class="fa-solid fa-phone text-terracotta mr-1.5"></i> (553) 829-1029
+                </p>
+            </div>
+
+            <!-- Newsletter -->
+            <div>
+                <h4 class="font-serif font-bold text-caramel mb-4">Newsletter</h4>
+                <p class="text-xs text-beige/70 mb-3">Subscribe for brew guides, fresh roast announcements, and special offers.</p>
+                <form id="newsletterForm" onsubmit="handleSubscribe(event)" class="space-y-2">
+                    <div class="relative">
+                        <input type="email" placeholder="Your email address" required class="w-full bg-roast text-xs text-white px-3.5 py-2.5 rounded-lg border border-caramel/20 focus:outline-none focus:border-caramel transition-colors placeholder:text-beige/30">
+                        <button type="submit" class="absolute right-1 top-1 bottom-1 px-3 bg-caramel text-espresso hover:bg-gold rounded-md text-xs font-semibold transition-colors">
+                            Join
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-8 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-beige/40">
+            <p>&copy; 2026 Craft &amp; Bean Coffee Roastery. All rights reserved.</p>
+            <div class="flex gap-4 mt-2 sm:mt-0">
+                <a href="#" class="hover:text-caramel transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-caramel transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Slide-over Cart Sidebar Drawer -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0">
+        <!-- Backdrop -->
+        <div id="cartBackdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div id="cartPanel" class="w-screen max-w-md bg-roast text-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out pointer-events-auto border-l border-caramel/20">
+                
+                <!-- Drawer Header -->
+                <div class="p-6 border-b border-caramel/15 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-caramel"></i>
+                        <h3 class="font-serif text-xl font-bold">Your Coffee Order</h3>
+                    </div>
+                    <button id="closeCartBtn" class="p-2 text-beige/60 hover:text-white rounded-lg hover:bg-white/5 transition-colors">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Drawer Cart Items Container -->
+                <div id="cartItemsList" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dynamic Cart Items Render Here -->
+                </div>
+
+                <!-- Drawer Footer & Checkout -->
+                <div class="p-6 border-t border-caramel/15 bg-espresso/80 space-y-4">
+                    <div class="space-y-1.5 text-sm">
+                        <div class="flex justify-between text-beige/70">
+                            <span>Subtotal</span>
+                            <span id="cartSubtotal">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-beige/70">
+                            <span>Estimated Tax</span>
+                            <span id="cartTax">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-lg font-bold text-white pt-2 border-t border-white/10">
+                            <span>Total</span>
+                            <span id="cartTotal" class="text-gold">$0.00</span>
+                        </div>
+                    </div>
+                    <button onclick="handleCheckout()" class="w-full py-3.5 bg-terracotta hover:bg-caramel text-white font-semibold rounded-xl transition-all shadow-lg shadow-terracotta/20 flex items-center justify-center gap-2">
+                        <span>Proceed to Checkout</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View / Customizer Modal -->
+    <div id="itemModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div id="modalCard" class="bg-roast border border-caramel/20 text-white rounded-2xl max-w-lg w-full p-6 shadow-2xl transform scale-95 transition-transform duration-300 relative overflow-hidden">
+            <button onclick="closeItemModal()" class="absolute top-4 right-4 p-2 text-beige/60 hover:text-white rounded-full bg-black/30 transition-colors z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Dynamically populated product details -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Overlay -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-espresso border border-caramel/40 text-white px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300">
+        <div class="w-7 h-7 rounded-full bg-caramel/20 text-caramel flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-check text-xs"></i>
+        </div>
+        <span id="toastMessage" class="text-xs font-medium">Item added to your order!</span>
+    </div>
+
+    <script>
+        // Data Store
+        const menuItems = [
+            {
+                id: 1,
+                name: "Smoked Vanilla Latte",
+                category: "espresso",
+                price: 5.75,
+                rating: 4.9,
+                reviews: 128,
+                description: "Double espresso, house-crafted vanilla bean syrup, silky steamed milk, finished with smoked salt.",
+                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 2,
+                name: "Nitro Cold Brew",
+                category: "cold",
+                price: 5.25,
+                rating: 4.8,
+                reviews: 94,
+                description: "Slow-steeped for 20 hours, infused with pure nitrogen for a creamy, velvety head and micro-bubbles.",
+                image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 3,
+                name: "Cortado",
+                category: "espresso",
+                price: 4.50,
+                rating: 4.9,
+                reviews: 76,
+                description: "Equal parts intense double shot espresso and warm steamed milk to reduce acidity.",
+                image: "https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 4,
+                name: "Spanish Iced Latte",
+                category: "cold",
+                price: 5.90,
+                rating: 5.0,
+                reviews: 112,
+                description: "Rich espresso combined with chilled fresh milk and a hint of sweetened condensed milk over ice.",
+                image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 5,
+                name: "Almond Butter Croissant",
+                category: "bakery",
+                price: 4.75,
+                rating: 4.8,
+                reviews: 85,
+                description: "Flaky, twice-baked artisan croissant layered with almond cream and topped with sliced roasted almonds.",
+                image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 6,
+                name: "Honeycomb Aeropress",
+                category: "special",
+                price: 6.25,
+                rating: 4.9,
+                reviews: 64,
+                description: "Single-origin pour filtered through Aeropress, served with a crunchy block of local honeycomb.",
+                image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 7,
+                name: "Cardamom Rose Cappuccino",
+                category: "special",
+                price: 5.80,
+                rating: 4.7,
+                reviews: 51,
+                description: "Spiced espresso with organic cardamom bitters, steamed microfoam, and edible organic rose petals.",
+                image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 8,
+                name: "Dark Chocolate Pain au Chocolat",
+                category: "bakery",
+                price: 4.50,
+                rating: 4.9,
+                reviews: 98,
+                description: "Traditional French buttery pastry dough wrapped around two batons of 70% Valrhona dark chocolate.",
+                image: "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=600&auto=format&fit=crop"
+            }
+        ];
+
+        // Custom Special Beans Map for Bag Purchases
+        const specialBeans = {
+            'bean-1': { id: 'bean-1', name: "Ethiopia Yirgacheffe Beans", price: 18.50, image: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?q=80&w=600&auto=format&fit=crop" },
+            'bean-2': { id: 'bean-2', name: "Velvet Espresso Reserve Beans", price: 19.00, image: "https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?q=80&w=600&auto=format&fit=crop" },
+            'bean-3': { id: 'bean-3', name: "Sumatra Dark Peak Beans", price: 17.50, image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=600&auto=format&fit=crop" }
+        };
+
+        // Application State
+        let cart = [];
+
+        // DOM Elements
+        const menuContainer = document.getElementById('menuContainer');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cartBtn = document.getElementById('cartBtn');
+        const cartBadge = document.getElementById('cartBadge');
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartBackdrop = document.getElementById('cartBackdrop');
+        const cartPanel = document.getElementById('cartPanel');
+        const closeCartBtn = document.getElementById('closeCartBtn');
+        const cartItemsList = document.getElementById('cartItemsList');
+        const cartSubtotalEl = document.getElementById('cartSubtotal');
+        const cartTaxEl = document.getElementById('cartTax');
+        const cartTotalEl = document.getElementById('cartTotal');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const itemModal = document.getElementById('itemModal');
+        const modalCard = document.getElementById('modalCard');
+        const modalContent = document.getElementById('modalContent');
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderMenu('all');
+            setupScrollHeader();
+            setupFilterListeners();
+            setupCartDrawerListeners();
+            setupMobileMenu();
+        });
+
+        // Navbar blur on scroll
+        function setupScrollHeader() {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('glass-panel', 'shadow-lg', 'py-3');
+                    navbar.classList.remove('py-5');
+                } else {
+                    navbar.classList.remove('glass-panel', 'shadow-lg', 'py-3');
+                    navbar.classList.add('py-5');
+                }
+            });
+        }
+
+        // Render Menu Cards
+        function renderMenu(category) {
+            menuContainer.innerHTML = '';
+            
+            const filtered = category === 'all' 
+                ? menuItems 
+                : menuItems.filter(item => item.category === category);
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-52 overflow-hidden bg-gray-100 cursor-pointer" onclick="openItemModal(${item.id})">
+                            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-xs font-bold text-espresso flex items-center gap-1 shadow-sm">
+                                <i class="fa-solid fa-star text-gold text-[10px]"></i> ${item.rating}
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-serif font-bold text-lg text-espresso cursor-pointer hover:text-terracotta transition-colors" onclick="openItemModal(${item.id})">${item.name}</h3>
+                            </div>
+                            <p class="text-espresso/60 text-xs leading-relaxed line-clamp-2 mb-4">${item.description}</p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-0 flex items-center justify-between border-t border-gray-50 mt-auto">
+                        <span class="text-lg font-bold text-espresso">$${item.price.toFixed(2)}</span>
+                        <button onclick="quickAddToCart(${item.id})" class="px-4 py-2 bg-espresso hover:bg-terracotta text-white font-medium text-xs rounded-xl transition-colors flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-plus text-[10px]"></i> Add to Order
+                        </button>
+                    </div>
+                `;
+                menuContainer.appendChild(card);
+            });
+        }
+
+        // Filter Button Interactions
+        function setupFilterListeners() {
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-espresso', 'text-white', 'shadow-md', 'active');
+                        b.classList.add('bg-white', 'text-espresso/70', 'hover:bg-beige', 'border', 'border-gray-200');
+                    });
+                    btn.classList.remove('bg-white', 'text-espresso/70', 'hover:bg-beige', 'border', 'border-gray-200');
+                    btn.classList.add('bg-espresso', 'text-white', 'shadow-md', 'active');
+
+                    renderMenu(btn.dataset.category);
+                });
+            });
+        }
+
+        // Cart Drawer Handlers
+        function setupCartDrawerListeners() {
+            cartBtn.addEventListener('click', openCart);
+            closeCartBtn.addEventListener('click', closeCart);
+            cartBackdrop.addEventListener('click', closeCart);
+        }
+
+        function openCart() {
+            cartDrawer.classList.remove('pointer-events-none', 'opacity-0');
+            cartDrawer.classList.add('opacity-100');
+            cartPanel.classList.remove('translate-x-full');
+        }
+
+        function closeCart() {
+            cartPanel.classList.add('translate-x-full');
+            cartDrawer.classList.remove('opacity-100');
+            cartDrawer.classList.add('pointer-events-none', 'opacity-0');
+        }
+
+        // Add to Cart Logic
+        function quickAddToCart(itemId) {
+            let targetItem;
+            if (typeof itemId === 'string' && specialBeans[itemId]) {
+                targetItem = specialBeans[itemId];
+            } else {
+                targetItem = menuItems.find(i => i.id === itemId);
+            }
+
+            if (!targetItem) return;
+
+            const existingIndex = cart.findIndex(ci => ci.id === targetItem.id);
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({
+                    id: targetItem.id,
+                    name: targetItem.name,
+                    price: targetItem.price,
+                    image: targetItem.image,
+                    quantity: 1
+                });
+            }
+
+            updateCartUI();
+            showToast(`Added "${targetItem.name}" to cart`);
+        }
+
+        // Update Cart Drawer UI
+        function updateCartUI() {
+            // Count
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartBadge.textContent = totalCount;
+            
+            if (totalCount > 0) {
+                cartBadge.classList.remove('opacity-0', 'scale-0');
+                cartBadge.classList.add('opacity-100', 'scale-100');
+            } else {
+                cartBadge.classList.add('opacity-0', 'scale-0');
+                cartBadge.classList.remove('opacity-100', 'scale-100');
+            }
+
+            // Items List
+            if (cart.length === 0) {
+                cartItemsList.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center text-beige/50 py-12">
+                        <i class="fa-solid fa-mug-hot text-4xl mb-3 opacity-30"></i>
+                        <p class="text-sm font-medium">Your cart is currently empty</p>
+                        <p class="text-xs text-beige/40 mt-1">Explore our menu and add your favorite brews!</p>
+                    </div>
+                `;
+            } else {
+                cartItemsList.innerHTML = cart.map(item => `
+                    <div class="flex items-center justify-between gap-3 bg-espresso/50 p-3 rounded-xl border border-white/5">
+                        <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-cover rounded-lg">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-xs font-bold text-white truncate">${item.name}</h4>
+                            <p class="text-xs text-gold font-semibold mt-0.5">$${item.price.toFixed(2)}</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <button onclick="adjustQuantity('${item.id}', -1)" class="w-5 h-5 rounded bg-white/10 hover:bg-caramel hover:text-espresso flex items-center justify-center text-xs transition-colors">-</button>
+                                <span class="text-xs font-semibold px-1">${item.quantity}</span>
+                                <button onclick="adjustQuantity('${item.id}', 1)" class="w-5 h-5 rounded bg-white/10 hover:bg-caramel hover:text-espresso flex items-center justify-center text-xs transition-colors">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart('${item.id}')" class="p-2 text-beige/40 hover:text-terracotta transition-colors">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            // Subtotal, Tax, Total
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const tax = subtotal * 0.08;
+            const total = subtotal + tax;
+
+            cartSubtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+            cartTaxEl.textContent = `$${tax.toFixed(2)}`;
+            cartTotalEl.textContent = `$${total.toFixed(2)}`;
+        }
+
+        function adjustQuantity(itemId, delta) {
+            const index = cart.findIndex(item => item.id == itemId);
+            if (index > -1) {
+                cart[index].quantity += delta;
+                if (cart[index].quantity <= 0) {
+                    cart.splice(index, 1);
+                }
+                updateCartUI();
+            }
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id != itemId);
+            updateCartUI();
+        }
+
+        // Quick View Modal
+        function openItemModal(itemId) {
+            const item = menuItems.find(i => i.id === itemId);
+            if (!item) return;
+
+            modalContent.innerHTML = `
+                <div class="h-56 bg-roast rounded-xl overflow-hidden mb-4 relative">
+                    <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-serif text-2xl font-bold">${item.name}</h3>
+                    <span class="text-xl font-bold text-gold">$${item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-xs text-beige/70 leading-relaxed mb-6">${item.description}</p>
+                <div class="flex items-center gap-3">
+                    <button onclick="quickAddToCart(${item.id}); closeItemModal();" class="flex-1 py-3 bg-terracotta hover:bg-caramel text-white font-semibold rounded-xl transition-colors text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-xs"></i> Add to Order
+                    </button>
+                </div>
+            `;
+
+            itemModal.classList.remove('pointer-events-none', 'opacity-0');
+            itemModal.classList.add('opacity-100');
+            modalCard.classList.remove('scale-95');
+            modalCard.classList.add('scale-100');
+        }
+
+        function closeItemModal() {
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+            itemModal.classList.remove('opacity-100');
+            itemModal.classList.add('pointer-events-none', 'opacity-0');
+        }
+
+        // Mobile Menu Toggle
+        function setupMobileMenu() {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // Checkout Notification
+        function handleCheckout() {
+            if (cart.length === 0) {
+                showToast("Your cart is empty!");
+                return;
+            }
+            showToast("Order placed successfully! Thank you.");
+            cart = [];
+            updateCartUI();
+            closeCart();
+        }
+
+        // Newsletter Handler
+        function handleSubscribe(e) {
+            e.preventDefault();
+            showToast("Thanks for subscribing to Craft & Bean!");
+            e.target.reset();
+        }
+
+        // Toast Helper
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = msg;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
